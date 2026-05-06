@@ -17,13 +17,16 @@ export const templates = [
     category: "SOUND (H)",
     items: [
       "SOUND (H): Buzzing/Distortion/Popping/Static",
-      "SOUND (H): Dropping Out / Intermittent Sound (bluetooth",
+      "SOUND (H): Dropping Out / Intermittent Sound (bluetooth)",
       "SOUND (H): Dropping Out / Intermittent Sound (wired)",
       "SOUND (H): No Sound Both Ears (TWS)",
       "SOUND (H): No Sound Both Ears (Wired)",
       "SOUND (H): No Sound L/R Ear (Wired)",
       "SOUND (H): No Sound L/R Ear (Wireless)",
       "SOUND (H): Not Enough Bass / Tinny",
+      "SOUND (H): No Sound In L or R Ear (TWS ONLY)",
+      "SOUND (H): No Sound In Either Ear (other on-ear, etc. - wired)",
+      "SOUND (H): No Sound In Either Ear (other on-ear, etc. - wireless)",
       "SOUND (H): Volume Low/Imbalanced (in-ears only)",
       "SOUND (H): Volume Low/Imbalanced (in-ears only)(Check My Best Fit & Personi-Fi)",
       "SOUND (H): Volume Low/Imbalanced (in-ears only)(Check My Best Fit)"

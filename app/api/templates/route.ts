@@ -1,7 +1,8 @@
 // app/api/templates/route.ts
 
 import { NextResponse } from "next/server";
-import axios from "axios";
+import fs from "fs/promises";
+import path from "path";
 
 export async function POST(req: Request) {
   try {
@@ -9,38 +10,12 @@ export async function POST(req: Request) {
     const { templateName } = body;
 
 
-    // Request payload (modify based on your need)
-    const requestData = {
-      query: {
-        expressions: [
-          {
-            field: "folderName",
-            operand: "=",
-            value: "US Customer Facing - Battery",
-          },
-          { "field": "folderName", "operand": "=", "value": "US Customer Facing - Sound (HPs)" },
-          { "field": "folderName", "operand": "=", "value": "US Customer Facing - Sound (Por)" }
-        ],
-        operator: "or",
-      },
-    };
+    const filePath = path.join(process.cwd(), "lib", "templates.json");
 
-    const response = await axios.post(
-      "https://platform.kore.ai/api/public/tables/SalesforceEmailTemplate/query?sys_limit=100&sys_offset=0",
-      requestData,
-      {
-        headers: {
-          auth: process.env.KORE_API_KEY as string,
-          "content-type": "application/json",
-        },
-      }
-    );
+    const fileContent = await fs.readFile(filePath, "utf-8");
+    const templates = JSON.parse(fileContent);
 
-    const data = response.data;
-
-    const templates = data?.queryResult || [];
-
-    const template = templates.find(
+    const template = templates.queryResult.find(
       (item: any) => {
 
 
