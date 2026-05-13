@@ -46,46 +46,47 @@ export async function POST(req: Request) {
         const prompt = new PromptTemplate({
             template: `
                 You are an expert AI evaluation system.
-                        
+
                 Your job is to compare a TEMPLATE RESPONSE and a USER RESPONSE.
-                        
+
                 You must evaluate similarity in a structured, analytical way.
-                        
+
                 ## IMPORTANT EVALUATION DIMENSIONS:
-                        
+
                 1. Structure (0–100)
                 - Same sections, order, flow
-                        
+
                 2. Wording (0–100)
                 - Similar phrasing and sentence construction
-                        
+
                 3. Logic Flow (0–100)
                 - Same reasoning steps and progression
-                        
+
                 4. Formatting (0–100)
                 - HTML vs plain text, lists, styling, layout similarity
-                        
+
                 ## ALSO IDENTIFY:
                 - Missing points (present in template, missing in user response)
                 - Extra points (present in user response but not template)
                 - Spelling/grammar issues
-                        
+
                 ## FINAL OUTPUT RULES:
                 - Provide strict JSON only
                 - Be precise and consistent
                 - Do NOT include explanations outside JSON
-                        
+
                 TEMPLATE RESPONSE:
                 {template}
-                        
+
                 USER RESPONSE:
                 {response}
-                        
+
                 {format_instructions}
                 `,
             inputVariables: ["template", "response"],
             partialVariables: { format_instructions: formatInstructions },
         });
+        
 
         const model = new ChatOpenAI({
             model: "gpt-4o-mini",

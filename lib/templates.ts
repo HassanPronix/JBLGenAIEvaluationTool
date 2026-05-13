@@ -29,13 +29,15 @@ export const templates = [
       "SOUND (H): No Sound In Either Ear (other on-ear, etc. - wireless)",
       "SOUND (H): Volume Low/Imbalanced (in-ears only)",
       "SOUND (H): Volume Low/Imbalanced (in-ears only)(Check My Best Fit & Personi-Fi)",
-      "SOUND (H): Volume Low/Imbalanced (in-ears only)(Check My Best Fit)"
+      "SOUND (H): Volume Low/Imbalanced (in-ears only)(Check My Best Fit)",
+      "SOUND (H): No Sound In Either Ear (in-ear TWS)"
     ],
   },
   {
     category: "SOUND (P)",
     items: [
-      "SOUND (P): Buzzing / Distortion / Static",
+      "SOUND (P): Buzzing / Distortion / Popping / Static",
+      
       "SOUND (P): Dropping out / Intermittent Sound (wired)",
       "SOUND (P): Dropping out / Intermittent Sound using (bluetooth)",
       "SOUND (P): Interference",

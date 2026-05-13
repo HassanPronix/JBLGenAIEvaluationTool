@@ -87,7 +87,6 @@ export default function Home() {
       <h1 className="text-2xl font-bold">GenAI Evaluation Tool</h1>
       <div className="grid grid-cols-2 gap-4 flex-1">
         {/* LEFT */}
-        {/* LEFT */}
         <div className="flex flex-col gap-4 h-full overflow-auto">
 
           {/* Comparison Panel */}
