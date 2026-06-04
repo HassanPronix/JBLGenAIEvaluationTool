@@ -48,6 +48,7 @@ export const templates = [
       "SOUND (P): No Sound (Wireless)",
       "SOUND (P): Too Much Bass",
       "SOUND (P): Volume Changes Automatically",
+      "SOUND (P): Not Enough Bass/Tinny",
     ],
   },
 ];
