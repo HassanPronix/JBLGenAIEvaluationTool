@@ -30,7 +30,8 @@ export const templates = [
       "SOUND (H): Volume Low/Imbalanced (in-ears only)",
       "SOUND (H): Volume Low/Imbalanced (in-ears only)(Check My Best Fit & Personi-Fi)",
       "SOUND (H): Volume Low/Imbalanced (in-ears only)(Check My Best Fit)",
-      "SOUND (H): No Sound In Either Ear (in-ear TWS)"
+      "SOUND (H): No Sound In Either Ear (in-ear TWS)",
+      "SOUND (H): Not Enough Bass / Tinny (in-ears) (Check My Best Fit)"
     ],
   },
   {
