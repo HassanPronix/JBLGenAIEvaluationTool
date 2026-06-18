@@ -50,6 +50,7 @@ export const templates = [
       "SOUND (P): Too Much Bass",
       "SOUND (P): Volume Changes Automatically",
       "SOUND (P): Not Enough Bass/Tinny",
+      "SOUND (P): Volume Suddenly Changes On Its Own"
     ],
   },
 ];
