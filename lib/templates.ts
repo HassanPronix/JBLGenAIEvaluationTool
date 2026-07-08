@@ -54,4 +54,14 @@ export const templates = [
       "SOUND (P): Volume Suddenly Changes On Its Own",
     ],
   },
+  {
+    category: "Bluetooth",
+    items: [
+      "BLUETOOTH: Asking For Pin (product does not support voice assistance)",
+      "BLUETOOTH: Asking For Pin (product supports voice assistance)",
+      "BLUETOOTH: Connecting/Active Issue",
+      "BLUETOOTH: Left and Right ear pieces not pairing together",
+      "BLUETOOTH: Pairing Issue",
+    ]
+  }
 ];
