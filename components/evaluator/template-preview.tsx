@@ -1,8 +1,21 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function TemplatePreview({ template, loading }: any) {
+  const [html, setHtml] = useState("");
+
+  useEffect(() => {
+    if (!template) {
+      setHtml("");
+      return;
+    }
+    const textarea = document.createElement("textarea");
+    textarea.innerHTML = template;
+    setHtml(textarea.value);
+  }, [template]);
+
   return (
     <Card className="flex-1 overflow-auto bg-card border shadow-sm rounded-xl">
       <CardContent className="p-4">
@@ -28,7 +41,7 @@ export default function TemplatePreview({ template, loading }: any) {
         {!loading && template && (
           <div
             className="prose prose-invert max-w-none"
-            dangerouslySetInnerHTML={{ __html: template }}
+            dangerouslySetInnerHTML={{ __html: html }}
           />
         )}
       </CardContent>
