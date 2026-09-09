@@ -1,16 +1,17 @@
-// lib/templates.ts
-
 export const templates = [
   {
     category: "BATTERY",
     items: [
       "BATTERY: Drains Too Fast/Not Holding Charge",
       "BATTERY: Drains Too Fast/Not Holding Charge - Zingtree Follow-Up",
-      "BATTERY: Not Charging",
+      "BATTERY: Not Charging(HP)",
+      "BATTERY: Not Charging(Por)",
       "BATTERY: Not Turning Off",
       "BATTERY: Not Turning On",
       "BATTERY: Only Works When Plugged In",
       "BATTERY: TWS Charging Issues",
+      "BATTERY: TWS Charging Issues (test)",
+      "Test Email Template",
     ],
   },
   {
@@ -54,14 +55,4 @@ export const templates = [
       "SOUND (P): Volume Suddenly Changes On Its Own",
     ],
   },
-  {
-    category: "Bluetooth",
-    items: [
-      "BLUETOOTH: Asking For Pin (product does not support voice assistance)",
-      "BLUETOOTH: Asking For Pin (product supports voice assistance)",
-      "BLUETOOTH: Connecting/Active Issue",
-      "BLUETOOTH: Left and Right ear pieces not pairing together",
-      "BLUETOOTH: Pairing Issue",
-    ]
-  }
 ];
