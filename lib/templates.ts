@@ -10,6 +10,8 @@ export const templates = [
       "BATTERY: Not Turning On",
       "BATTERY: Only Works When Plugged In",
       "BATTERY: TWS Charging Issues",
+      "BATTERY: TWS Charging Issues (test)",
+      "Test Email Template",
     ],
   },
   {
