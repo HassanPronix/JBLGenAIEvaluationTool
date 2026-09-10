@@ -34,8 +34,8 @@ export default function TemplateSelector({ onSelect, loading }: any) {
 
   return (
     <div className="border rounded-xl bg-muted/20 shadow-sm">
-      <Command className="bg-transparent">
-        
+      <Command shouldFilter={false} className="bg-transparent">
+
         {/* Input */}
         <div className="border-b px-3 py-2">
           <CommandInput
@@ -50,12 +50,13 @@ export default function TemplateSelector({ onSelect, loading }: any) {
         <CommandList className="max-h-48 overflow-auto p-2">
           <CommandEmpty>No templates found.</CommandEmpty>
 
-          {filteredTemplates.map((item, index) => {
+          {filteredTemplates.map((item) => {
             const isActive = selected === item.name;
 
             return (
               <CommandItem
-                key={index}
+                key={`${item.category}-${item.name}`}
+                value={item.name}
                 onSelect={() => {
                   setSelected(item.name);
                   onSelect({ name: item.name });
@@ -65,7 +66,7 @@ export default function TemplateSelector({ onSelect, loading }: any) {
                 `}
               >
                 <div className="flex items-center justify-between w-full">
-                  
+
                   {/* Left */}
                   <div className="flex flex-col">
                     <span className="font-medium">{item.name}</span>
