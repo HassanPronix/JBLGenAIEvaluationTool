@@ -7,6 +7,7 @@ import TemplatePreview from "@/components/evaluator/template-preview";
 import CompareButton from "@/components/evaluator/compare-button";
 import { parseTemplate } from "@/lib/parseTemplate";
 import ComparisonPanel from "@/components/evaluator/comparison-panel";
+import SyncButton from "@/components/evaluator/sync-button";
 
 export default function Home() {
 
@@ -15,6 +16,7 @@ export default function Home() {
   const [userInput, setUserInput] = useState("");
   const [comparison, setComparison] = useState<any>(null);
   const [compareLoading, setCompareLoading] = useState(false);
+  const [syncLoading, setSyncLoading] = useState(false);
 
   const handleTemplateSelect = async ({
     name,
@@ -82,9 +84,44 @@ export default function Home() {
     }
   };
 
+  const handleSync = async () => {
+    setSyncLoading(true);
+
+    try {
+      const res = await fetch("/api/sync-templates", { method: "POST" });
+
+      if (!res.ok) {
+        alert("Failed to sync templates");
+        return;
+      }
+
+      const data = await res.json();
+
+      const blob = new Blob([JSON.stringify(data.templates, null, 2)], {
+        type: "application/json",
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "templates.json";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("Error syncing templates:", err);
+      alert("Error syncing templates");
+    } finally {
+      setSyncLoading(false);
+    }
+  };
+
   return (
     <div className="p-6 h-screen flex flex-col gap-4 bg-background text-foreground">
-      <h1 className="text-2xl font-bold">GenAI Evaluation Tool</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-bold">GenAI Evaluation Tool</h1>
+        <SyncButton onSync={handleSync} loading={syncLoading} />
+      </div>
       <div className="grid grid-cols-2 gap-4 flex-1">
         {/* LEFT */}
         <div className="flex flex-col gap-4 h-full overflow-auto">
