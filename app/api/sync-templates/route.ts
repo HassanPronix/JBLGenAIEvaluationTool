@@ -35,60 +35,6 @@ export interface Template {
     htmlBody: string;
 }
 
-function cleanHtml(htmlBody: string) {
-    if (!htmlBody || typeof htmlBody !== "string") {
-        return "";
-    }
-
-    let html = htmlBody;
-
-    // 1. Decode HTML entities
-    html = html
-        .replace(/&lt;/gi, "<")
-        .replace(/&gt;/gi, ">")
-        .replace(/&amp;/gi, "&")
-        .replace(/&quot;/gi, '"')
-        .replace(/&#39;/gi, "'")
-        .replace(/&nbsp;/gi, " ");
-
-    // 2. Remove <style>...</style> blocks
-    html = html.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "");
-
-    // 3. Remove malformed/duplicate <br> tags
-    //    <br>, <br/>, <br />
-    //    Multiple consecutive ones become a single <br>
-    html = html.replace(
-        /(?:\s*<br\s*\/?>\s*)+/gi,
-        "<br>"
-    );
-
-    // 4. Remove whitespace between HTML tags
-    html = html.replace(/>\s+</g, "><");
-
-    // 5. Normalize spaces around <br>
-    html = html.replace(/\s*<br\s*\/?>\s*/gi, "<br>");
-
-    // 6. Remove empty paragraphs
-    html = html.replace(/<p\b[^>]*>\s*<\/p>/gi, "");
-
-    // 7. Remove empty list items
-    html = html.replace(/<li\b[^>]*>\s*<\/li>/gi, "");
-
-    // 8. Remove unnecessary closing </li> at the end
-    html = html.replace(/<\/li>\s*$/i, "");
-
-    // 9. Remove leading/trailing <br>
-    html = html.replace(/^(?:<br>)+/i, "");
-    html = html.replace(/(?:<br>)+$/i, "");
-
-    // 10. Normalize remaining whitespace
-    html = html.replace(/[ \t]{2,}/g, " ");
-    html = html.trim();
-
-    return html;
-}
-
-
 export async function POST() {
     try {
         const res = await fetch(
@@ -127,7 +73,7 @@ export async function POST() {
             TID: r.TID,
             TName: r.TName,
             folderName: r.folderName,
-            htmlBody: cleanHtml(r.htmlBody),
+            htmlBody: r.htmlBody
         }));
 
         // console.log(templates)
