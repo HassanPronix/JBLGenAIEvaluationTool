@@ -333,7 +333,7 @@ function formatLinks(html: string) {
   return html.replace(
     /<a\b([^>]*)href=["']([^"']+)["']([^>]*)>([\s\S]*?)<\/a>/gi,
     (_match, before, href, after, text) => {
-      return `${text.trim()}<br/><a href="${href}" target="_blank" rel="noopener noreferrer">${href}</a>`;
+      return `${text.trim()}<br/><a href="${href}" target="_blank" rel="noopener noreferrer" style="color: blue;">${href}</a>`;
     }
   );
 }
