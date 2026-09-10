@@ -69,18 +69,24 @@ export async function POST() {
 
         const data: KoreQueryResponse = await res.json();
 
-        const templates: Template[] = (data.queryResult ?? []).map((r) => ({
+        const decodeHtml = (s: string) =>
+            s
+                .replace(/&lt;/g, "<")
+                .replace(/&gt;/g, ">")
+                .replace(/&amp;/g, "&")
+                .replace(/&quot;/g, '"')
+                .replace(/&#39;/g, "'");
+
+        const queryResult: Template[] = (data.queryResult ?? []).map((r) => ({
             TID: r.TID,
             TName: r.TName,
             folderName: r.folderName,
-            htmlBody: r.htmlBody,
+            htmlBody: decodeHtml(r.htmlBody),
         }));
 
-        return NextResponse.json({
-            total: data.total,
-            hasMore: data.hasMore,
-            templates,
-        });
+        // console.log(templates)
+        return NextResponse.json({ queryResult });
+
     } catch (err) {
         console.error("Error syncing templates:", err);
         return NextResponse.json(
