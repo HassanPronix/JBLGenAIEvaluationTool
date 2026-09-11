@@ -325,6 +325,7 @@ function cleanHtml(htmlBody: string, nextStepHtml?: string) {
 
   decoded = formatLists(decoded);
   decoded = formatLinks(decoded);
+  decoded = formatResetStepsAndManualPairingSteps(decoded)
 
   return decoded.trim();
 }
@@ -337,6 +338,30 @@ function formatLinks(html: string) {
     }
   );
 }
+
+function formatResetStepsAndManualPairingSteps(html: string) {
+
+  const redPlaceholders = [
+    '[Provide the steps that can be found in the manual]',
+    '[List steps here]',
+    '[Provide the pairing steps that can be found in the QSG or Manual]',
+    '[instructions can be found in the manual or SF]',
+    'To reset, (x[List Steps Here])'
+  ];
+
+  const placeholderRegex = new RegExp(
+    redPlaceholders
+      .map(s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+      .join('|'),
+    'gi'
+  );
+
+  return html.replace(
+    placeholderRegex,
+    match => `<span style="color: red;">${match}</span>`
+  );
+}
+
 
 
 export function parseTemplate(
