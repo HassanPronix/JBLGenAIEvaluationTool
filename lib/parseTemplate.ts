@@ -346,7 +346,8 @@ function formatResetStepsAndManualPairingSteps(html: string) {
     '[List steps here]',
     '[Provide the pairing steps that can be found in the QSG or Manual]',
     '[instructions can be found in the manual or SF]',
-    'To reset, (x[List Steps Here])'
+    'To reset, (x[List Steps Here])',
+    'Perform manual pairing'
   ];
 
   const placeholderRegex = new RegExp(

@@ -38,7 +38,7 @@ export interface Template {
 export async function POST() {
     try {
         const res = await fetch(
-            "https://platform.kore.ai/api/public/tables/EmailTemplates/query?sys_limit=100&sys_offset=0",
+            "https://platform.kore.ai/api/public/tables/Release2_SalesforceEmailTemplate/query?sys_limit=100&sys_offset=0",
             {
                 method: "POST",
                 headers: {
